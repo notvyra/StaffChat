@@ -7,6 +7,7 @@ use LUKAY\StaffChat\listener\PlayerJoinListener;
 use LUKAY\StaffChat\listener\PlayerQuitListener;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
 use pocketmine\utils\SingletonTrait;
 
 class StaffChat extends PluginBase {
@@ -15,6 +16,7 @@ class StaffChat extends PluginBase {
     private array $onlineStaffMembers = [];
 
     protected function onLoad(): void {
+        $this->saveResource("config.yml");
         self::setInstance($this);
     }
 
@@ -22,6 +24,10 @@ class StaffChat extends PluginBase {
         $this->getServer()->getCommandMap()->register("StaffChat", new StaffChatCommand("staffchat", "Write something in the Staff Chat", null, ["sc"]));
         $this->getServer()->getPluginManager()->registerEvents(new PlayerJoinListener(), $this);
         $this->getServer()->getPluginManager()->registerEvents(new PlayerQuitListener(), $this);
+    }
+
+    public function getConfig(): Config {
+        return new Config($this->getDataFolder() . "config.yml", Config::YAML);
     }
 
     public function isStaffMember(Player $player): bool {

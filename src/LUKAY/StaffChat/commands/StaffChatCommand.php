@@ -24,19 +24,18 @@ class StaffChatCommand extends Command implements PluginOwned {
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
         $staffchat = StaffChat::getInstance();
         if (!$sender instanceof Player) {
-            $sender->sendMessage("You cannot run this command from the console");
+            $sender->sendMessage($staffchat->getConfig()->get("executor-not-player"));
             return;
         }
 
         if (!$this->testPermission($sender)) {
-            $sender->sendMessage("You don't have access to Staff Chat");
             return;
         }
 
         if (empty($args[0])) {
-            $sender->sendMessage("You didn't specify a message to send");
+            $sender->sendMessage($staffchat->getConfig()->get("no-message-specified"));
             return;
         }
-        $staffchat->sendMessage("§6§lStaffChat §r§7| " . implode(" ", $args));
+        $staffchat->sendMessage(str_replace(["{player}", "{message}"] ,[$sender->getName(), implode(" ", $args)], $staffchat->getConfig()->get("chat-design")));
     }
 }

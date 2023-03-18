@@ -1,0 +1,7 @@
+executor-not-player: "This command can only be executed ingame."
+no-message-specified: "You didn't specify a message to send."
+
+# Use {player} for the Player's Name
+# Use {message} for the message
+
+chat-design: "§6§lStaffChat §r§7| §e[{player}] » §r{message}"
