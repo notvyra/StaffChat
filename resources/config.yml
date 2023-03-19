@@ -12,5 +12,5 @@ staffchat-use-prefix: "*"
 
 #
 
-webhook: true
-webhook-url: "https://discordapp.com/api/webhooks/1087052446334996510/QB4hdn-544I-Cutp1c1hMMTmrU4Rt4P-6m6E59fKcCYkFQspYhDvLUbT6gEF0iIjCfaV"
+webhook: false
+webhook-url: ""
