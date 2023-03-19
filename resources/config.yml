@@ -9,3 +9,8 @@ chat-design: "§6§lStaffChat §r§7| §e[{player}] » §r{message}"
 # With that PREFIX you can send messages to the staff chat, without using the command
 
 staffchat-use-prefix: "*"
+
+#
+
+webhook: true
+webhook-url: "https://discordapp.com/api/webhooks/1087052446334996510/QB4hdn-544I-Cutp1c1hMMTmrU4Rt4P-6m6E59fKcCYkFQspYhDvLUbT6gEF0iIjCfaV"

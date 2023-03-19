@@ -36,6 +36,12 @@ class StaffChatCommand extends Command implements PluginOwned {
             $sender->sendMessage($staffchat->getConfig()->get("no-message-specified"));
             return;
         }
-        $staffchat->sendMessage(str_replace(["{player}", "{message}"] ,[$sender->getName(), implode(" ", $args)], $staffchat->getConfig()->get("chat-design")));
+
+        if ($staffchat->getConfig()->get("webhook") === true) {
+            $staffchat->sendMessage(str_replace(["{player}", "{message}"] ,[$sender->getName(), implode(" ", $args)], $staffchat->getConfig()->get("chat-design")));
+            $staffchat->sendMessageToDiscord($sender, implode(" ", $args));
+        } else {
+            $staffchat->sendMessage(str_replace(["{player}", "{message}"] ,[$sender->getName(), implode(" ", $args)], $staffchat->getConfig()->get("chat-design")));
+        }
     }
 }

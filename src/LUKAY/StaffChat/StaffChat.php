@@ -6,8 +6,10 @@ use LUKAY\StaffChat\commands\StaffChatCommand;
 use LUKAY\StaffChat\listener\PlayerChatListener;
 use LUKAY\StaffChat\listener\PlayerJoinListener;
 use LUKAY\StaffChat\listener\PlayerQuitListener;
+use LUKAY\StaffChat\tasks\SendAsyncTask;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\Server;
 use pocketmine\utils\Config;
 use pocketmine\utils\SingletonTrait;
 
@@ -30,6 +32,10 @@ class StaffChat extends PluginBase {
 
     public function getConfig(): Config {
         return new Config($this->getDataFolder() . "config.yml", Config::YAML);
+    }
+
+    public function sendMessageToDiscord(Player $player, string $message): void {
+        Server::getInstance()->getAsyncPool()->submitTask(new SendAsyncTask($player->getName(), $message, $this->getConfig()->get("webhook-url")));
     }
 
     public function isStaffMember(Player $player): bool {
