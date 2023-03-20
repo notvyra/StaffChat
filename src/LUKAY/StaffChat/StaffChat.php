@@ -24,7 +24,7 @@ class StaffChat extends PluginBase {
     }
 
     protected function onEnable(): void {
-        $this->getServer()->getCommandMap()->register("StaffChat", new StaffChatCommand("staffchat", "Write something in the Staff Chat", null, ["sc"]));
+        $this->getServer()->getCommandMap()->register("UltraStaffChat", new StaffChatCommand("staffchat", "Write something in the Staff Chat", null, ["sc"]));
         $this->getServer()->getPluginManager()->registerEvents(new PlayerChatListener(), $this);
         $this->getServer()->getPluginManager()->registerEvents(new PlayerJoinListener(), $this);
         $this->getServer()->getPluginManager()->registerEvents(new PlayerQuitListener(), $this);

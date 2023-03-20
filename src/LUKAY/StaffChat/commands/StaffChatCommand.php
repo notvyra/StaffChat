@@ -13,7 +13,7 @@ use pocketmine\plugin\PluginOwned;
 class StaffChatCommand extends Command implements PluginOwned {
 
     public function __construct(string $name, Translatable|string $description = "", Translatable|string|null $usageMessage = null, array $aliases = []) {
-        $this->setPermission("staffchat.bypass");
+        $this->setPermission("ultrastaffchat.bypass");
         parent::__construct($name, $description, $usageMessage, $aliases);
     }
 
