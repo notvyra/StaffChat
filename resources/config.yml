@@ -1,3 +1,5 @@
+# Command execution failure
+
 executor-not-player: "This command can only be executed ingame."
 no-message-specified: "You didn't specify a message to send."
 
@@ -10,7 +12,7 @@ chat-design: "§6§lStaffChat §r§7| §e[{player}] » §r{message}"
 
 staffchat-use-prefix: "*"
 
-#
+# This feature allows messages sent in-game in StaffChat to be displayed in the Discord Server StaffChat channel.
 
 webhook: false
 webhook-url: ""
